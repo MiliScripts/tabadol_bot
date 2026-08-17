@@ -1,0 +1,54 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  # --- CI: BUILD & CACHE ---
+  build:
+    name: Build & Cache
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Verify Requirements
+        run: pip install -r requirements.txt
+
+  # --- CD: AUTO DEPLOY TO VPS ---
+  deploy:
+    name: Deploy to Server
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH and Update Server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: root
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            echo "🚀 Deploying updates to /root/bid..."
+            cd /root/bid
+            
+            # Safe pull (keeps databases and sessions untouched)
+            git reset --hard HEAD
+            git pull origin main
+            
+            # Update Python environment
+            source venv/bin/activate
+            pip install -r requirements.txt
+            
+            # Restart bot services
+            echo "🔄 Restarting bot..."
+            bash restart.sh
+            
+            echo "✅ Deployment Finished Successfully!"
