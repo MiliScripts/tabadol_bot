@@ -1,0 +1,123 @@
+services:
+  bid_bot:
+    build: .
+    container_name: bid_bot
+    restart: always
+    working_dir: /app
+    command: python3 main.py
+    volumes:
+      - /root/bid:/app
+    environment:
+      - TZ=Asia/Tehran
+      - PYTHONUNBUFFERED=1
+
+  bid_backuper:
+    build: .
+    container_name: bid_backuper
+    restart: always
+    working_dir: /app
+    command: python3 backuper.py
+    volumes:
+      - /root/bid:/app
+    environment:
+      - TZ=Asia/Tehran
+      - PYTHONUNBUFFERED=1
+
+  bid_transactions_report:
+    build: .
+    container_name: bid_transactions_report
+    restart: always
+    working_dir: /app
+    command: python3 transactions_daily_report.py
+    volumes:
+      - /root/bid:/app
+    environment:
+      - TZ=Asia/Tehran
+      - PYTHONUNBUFFERED=1
+
+  navasan-to-bale:
+    build: .
+    container_name: navasan-to-bale
+    restart: always
+    working_dir: /app
+    command: python3 navasan_to_bale.py
+    volumes:
+      - /root/bid:/app
+    environment:
+      - TZ=Asia/Tehran
+      - PYTHONUNBUFFERED=1
+
+  order-book:
+    build: .
+    container_name: order-book
+    restart: always
+    working_dir: /app
+    command: python3 order-book.py
+    volumes:
+      - /root/bid:/app
+    environment:
+      - TZ=Asia/Tehran
+      - PYTHONUNBUFFERED=1
+
+  parachi-auth-bot:
+    build: .
+    container_name: parachi-auth-bot
+    restart: always
+    working_dir: /app
+    command: python3 parachi_auth_bot.py
+    volumes:
+      - /root/bid:/app
+    environment:
+      - TZ=Asia/Tehran
+      - PYTHONUNBUFFERED=1
+
+  parachi-price-story-image:
+    build: .
+    container_name: parachi-price-story-image
+    restart: always
+    working_dir: /app/parachi_price_story_image
+    command: python3 app.py
+    volumes:
+      - /root/bid:/app
+    environment:
+      - TZ=Asia/Tehran
+      - PYTHONUNBUFFERED=1
+
+  parachi-price-updates:
+    build: .
+    container_name: parachi-price-updates
+    restart: always
+    working_dir: /app
+    command: python3 parachi_price_updates.py
+    volumes:
+      - /root/bid:/app
+    environment:
+      - TZ=Asia/Tehran
+      - PYTHONUNBUFFERED=1
+
+  update_handler:
+    build: .
+    container_name: update_handler
+    restart: always
+    working_dir: /app/scrapper
+    command: python3 update_handler.py
+    volumes:
+      - /root/bid:/app
+    environment:
+      - TZ=Asia/Tehran
+      - PYTHONUNBUFFERED=1
+
+  status_dashboard:
+    build: .
+    container_name: status_dashboard
+    restart: always
+    working_dir: /app
+    command: python3 -m uvicorn status_app:app --host 0.0.0.0 --port 8080
+    ports:
+      - "8080:8080"
+    volumes:
+      - /root/bid:/app
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - TZ=Asia/Tehran
+      - PYTHONUNBUFFERED=1

@@ -1,0 +1,6 @@
+requests
+jdatetime
+Pillow
+arabic-reshaper
+python-bidi
+pyTelegramBotAPI

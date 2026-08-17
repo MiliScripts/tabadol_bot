@@ -1,0 +1,14 @@
+master_user_id = 982290123
+api_id = 15395640
+api_hash = "342d15c979a8c8384cd42bdb49b1a424"
+bot_token =  "7476343605:AAEz6Yo-35df0JAdbjIp_-FMGA_zX2efcgE"
+session_string = "BADq6zgAXJuYpvrIhFcrhNKdXegopY5Tf2FRB7w5wvFYPtrrs1JzBb0lJOiqKZJDFdYszXXO_xpK1VEiA0K_3M9e64eZjCK_q__tI5MLyXAWLsfO6kkIBm23DguOQdo86eAkbiu1Lh1NrucsxNG3FeFR0E8YQAIE6JfTznUeJWvcOYfRhCKWZVPCnUgtMqxGpBwnmAEkQ6SF_-fwipcBQ6fkH4pgIvIdo9cnrk-xDf8pqmfLVJ-9Z3esWlL5PhSDIXEBRrfn8YGJi6HiRTq6nxn_j2KYC8Dw3bXiZZEO0KZcjPj-IybOWMQ94gGkrD5OUmZtn8mcTeXtafP4-7BOP4_rpSAw2wAAAAGvtXzGAA"   
+channel_id = -1002065261878
+fexpal_channel_id = -1001390971155
+patriex_channel_id = -1001641215699
+listener_demo_id = -1002165466855
+orce_join_channel_link ="https://t.me/crwpace"
+force_join_channel_id = -1002065261878
+bot_id = "@TabadolArz_Robot"
+channel_address = "https://t.me/TabadolArz_Trades/"
+support_chat_link = "https://t.me/TabadolArz_Support"

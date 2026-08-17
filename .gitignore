@@ -1,0 +1,28 @@
+__pycache__/
+venv/
+*.pyc
+
+# Databases & data (DO NOT COMMIT)
+*.db
+*.sqlite3
+bot.db
+bot_backup.db
+bot_users.db
+data/
+tmp/
+
+# Telegram sessions & user files (CRITICAL)
+*.session
+*.session-journal
+Api.session
+Api.session-journal
+users.xlsx
+seen_orders.json
+
+# Temporary & Log files
+logs/
+*.log
+aQps5m1WIR.txt
+xdzgF0S1uI.txt
+statuapp.txt
+.env
